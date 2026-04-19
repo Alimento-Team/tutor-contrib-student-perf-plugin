@@ -18,7 +18,7 @@ spec:
       containers:
         - name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
           image: {{ CHALIX_SP_MLA_IMAGE }}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ CHALIX_SP_MLA_PORT }}
           env:
@@ -52,7 +52,7 @@ spec:
       containers:
         - name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
           image: {{ CHALIX_SP_EMOTION_IMAGE }}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: {{ CHALIX_SP_EMOTION_PORT }}
           env:

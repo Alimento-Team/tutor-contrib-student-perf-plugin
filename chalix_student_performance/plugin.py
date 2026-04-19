@@ -15,9 +15,8 @@ config = {
         "EMOTION_SERVICE_NAME": "emotion-score",
         "MLA_PORT": 9010,
         "EMOTION_PORT": 9011,
-        # Set these to registry-published images accessible from your cluster.
-        "MLA_IMAGE": "docker.io/alimento/chalix-mla-prediction:latest",
-        "EMOTION_IMAGE": "docker.io/alimento/chalix-emotion-prediction:latest",
+        "MLA_IMAGE": "ghcr.io/alimento-team/chalix-student-performance-mla-prediction:latest",
+        "EMOTION_IMAGE": "ghcr.io/alimento-team/chalix-student-performance-emotion-prediction:latest",
         "MODEL_WEIGHTS_DIR": "/app/model_weights",
         "SHAPE_PREDICTOR_PATH": "/app/shape_predictor_68_face_landmarks.dat",
         "MINIO_ENDPOINT": "minio.openedx.svc.cluster.local:9000",
