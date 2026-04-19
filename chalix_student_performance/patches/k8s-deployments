@@ -19,6 +19,8 @@ spec:
         - name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
           image: {{ CHALIX_SP_MLA_IMAGE }}
           imagePullPolicy: Always
+          command: ["uvicorn"]
+          args: ["main:app", "--host", "0.0.0.0", "--port", "{{ CHALIX_SP_MLA_PORT }}"]
           ports:
             - containerPort: {{ CHALIX_SP_MLA_PORT }}
           env:
@@ -53,6 +55,8 @@ spec:
         - name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
           image: {{ CHALIX_SP_EMOTION_IMAGE }}
           imagePullPolicy: Always
+          command: ["uvicorn"]
+          args: ["main:app", "--host", "0.0.0.0", "--port", "{{ CHALIX_SP_EMOTION_PORT }}"]
           ports:
             - containerPort: {{ CHALIX_SP_EMOTION_PORT }}
           env:
