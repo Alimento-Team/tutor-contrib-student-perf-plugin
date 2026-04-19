@@ -1,0 +1,29 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+  labels:
+    app.kubernetes.io/name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ CHALIX_SP_MLA_PORT }}
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+  labels:
+    app.kubernetes.io/name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+spec:
+  type: ClusterIP
+  ports:
+    - port: {{ CHALIX_SP_EMOTION_PORT }}
+      protocol: TCP
+  selector:
+    app.kubernetes.io/name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}

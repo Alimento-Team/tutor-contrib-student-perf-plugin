@@ -1,0 +1,77 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+  labels:
+    app.kubernetes.io/name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+spec:
+  replicas: {{ CHALIX_SP_MLA_REPLICAS }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+    spec:
+      containers:
+        - name: {{ CHALIX_SP_MLA_SERVICE_NAME }}
+          image: {{ CHALIX_SP_MLA_IMAGE }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ CHALIX_SP_MLA_PORT }}
+          env:
+            - name: MODEL_WEIGHTS_DIR
+              value: "{{ CHALIX_SP_MODEL_WEIGHTS_DIR }}"
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: 200m
+            limits:
+              memory: 2Gi
+              cpu: "1"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+  labels:
+    app.kubernetes.io/name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+spec:
+  replicas: {{ CHALIX_SP_EMOTION_REPLICAS }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+    spec:
+      containers:
+        - name: {{ CHALIX_SP_EMOTION_SERVICE_NAME }}
+          image: {{ CHALIX_SP_EMOTION_IMAGE }}
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: {{ CHALIX_SP_EMOTION_PORT }}
+          env:
+            - name: MODEL_WEIGHTS_DIR
+              value: "{{ CHALIX_SP_MODEL_WEIGHTS_DIR }}"
+            - name: SHAPE_PREDICTOR_PATH
+              value: "{{ CHALIX_SP_SHAPE_PREDICTOR_PATH }}"
+            - name: MINIO_ENDPOINT
+              value: "{{ CHALIX_SP_MINIO_ENDPOINT }}"
+            - name: MINIO_ACCESS_KEY
+              value: "{{ CHALIX_SP_MINIO_ACCESS_KEY }}"
+            - name: MINIO_SECRET_KEY
+              value: "{{ CHALIX_SP_MINIO_SECRET_KEY }}"
+            - name: MINIO_SECURE
+              value: "{{ CHALIX_SP_MINIO_SECURE }}"
+          resources:
+            requests:
+              memory: 1Gi
+              cpu: 300m
+            limits:
+              memory: 4Gi
+              cpu: "2"

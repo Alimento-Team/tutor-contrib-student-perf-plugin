@@ -1,0 +1,36 @@
+[project]
+name = "tutor-contrib-chalix-student-performance"
+description = "Tutor plugin for internal Chalix student-performance APIs"
+authors = [
+  { name = "Alimento Team" }
+]
+license = { text = "Proprietary" }
+readme = { file = "README.rst", content-type = "text/x-rst" }
+requires-python = ">=3.9"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "tutor>=20.0.0,<21.0.0",
+]
+dynamic = ["version"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "chalix_student_performance/__about__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["chalix_student_performance"]
+
+[tool.hatch.build.targets.sdist]
+strict-naming = false
+include = ["/chalix_student_performance"]
+
+[project.entry-points."tutor.plugin.v1"]
+chalix_student_performance = "chalix_student_performance.plugin"

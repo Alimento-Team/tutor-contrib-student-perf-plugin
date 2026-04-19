@@ -1,0 +1,9 @@
+# Internal-only in-cluster endpoints for student performance APIs.
+CHALIX_MLA_SCORE_API_URL = (
+    "http://{{ CHALIX_SP_MLA_SERVICE_NAME }}.{{ K8S_NAMESPACE }}.svc.cluster.local:"
+    "{{ CHALIX_SP_MLA_PORT }}"
+)
+CHALIX_EMOTION_SCORE_API_URL = (
+    "http://{{ CHALIX_SP_EMOTION_SERVICE_NAME }}.{{ K8S_NAMESPACE }}.svc.cluster.local:"
+    "{{ CHALIX_SP_EMOTION_PORT }}"
+)
