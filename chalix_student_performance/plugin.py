@@ -15,7 +15,7 @@ config = {
         "EMOTION_SERVICE_NAME": "emotion-score",
         "MLA_PORT": 9010,
         "EMOTION_PORT": 9011,
-        "MLA_IMAGE": "ghcr.io/alimento-team/chalix-student-performance-mla-prediction:latest",
+        "MLA_IMAGE": "ghcr.io/alimento-team/chalix-student-performance-emotion-prediction:latest",
         "EMOTION_IMAGE": "ghcr.io/alimento-team/chalix-student-performance-emotion-prediction:latest",
         "MODEL_WEIGHTS_DIR": "/app/model_weights",
         "SHAPE_PREDICTOR_PATH": "/app/shape_predictor_68_face_landmarks.dat",
